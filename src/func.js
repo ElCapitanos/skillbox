@@ -1,10 +1,10 @@
-import data from './data'
+//import data from './data'
 
-function homework (text){
-    alert(text)
-  }
+//function homework (text){
+  //  alert(text)
+  //}
 
-  homework(data.message1)
-  homework(data.message2)
+  //homework(data.message1)
+  //homework(data.message2)
 
-  export default homework
+  //export default homework
