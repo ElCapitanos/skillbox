@@ -17,6 +17,6 @@ export default [
     },
     {
         id:5,
-        title: ''
+        title: 'Японские гитары'
     }
 ]
