@@ -31,12 +31,12 @@
             <ul class="colors">
               <li class="colors__item">
                 <label class="colors__label">
-                  <input class="colors__radio sr-only" type="radio" name="color" value="#73B6EA"> <!-- checked=""-->
+                  <input class="colors__radio sr-only" type="radio" name="color" value="0"  v-model.number="currentColor"> <!-- checked=""-->
                   <span class="colors__value" style="background-color: #73B6EA;">
                   </span>
                 </label>
               </li>
-              <li class="colors__item">
+              <!--<li class="colors__item">
                 <label class="colors__label">
                   <input class="colors__radio sr-only" type="radio" name="color" value="#FFBE15">
                   <span class="colors__value" style="background-color: #FFBE15;">
@@ -48,13 +48,14 @@
                   <input class="colors__radio sr-only" type="radio" name="color" value="#939393">
                   <span class="colors__value" style="background-color: #939393;">
                 </span></label>
-              </li>
+              </li>-->
               <li class="colors__item">
                 <label class="colors__label">
-                  <input class="colors__radio sr-only" type="radio" name="color" value="#8BE000">
+                  <input class="colors__radio sr-only" type="radio" name="color" value="1"   v-model.number="currentColor">
                   <span class="colors__value" style="background-color: #8BE000;">
                 </span></label>
               </li>
+              <!--
               <li class="colors__item">
                 <label class="colors__label">
                   <input class="colors__radio sr-only" type="radio" name="color" value="#FF6B00">
@@ -66,10 +67,10 @@
                   <input class="colors__radio sr-only" type="radio" name="color" value="#FFF">
                   <span class="colors__value" style="background-color: #FFF;">
                 </span></label>
-              </li>
+              </li>-->
               <li class="colors__item">
                 <label class="colors__label">
-                  <input class="colors__radio sr-only" type="radio" name="color" value="#000">
+                  <input class="colors__radio sr-only" type="radio" name="color" value="2"  v-model.number="currentColor">
                   <span class="colors__value" style="background-color: #000;">
                 </span></label>
               </li>
@@ -156,9 +157,10 @@ export default {
             currentPriceFrom: 0,
             currentPriceTo: 0,
             currentCategoryId: 0,
+            currentColor: 0,
         }
     },
-    props: ['priceFrom', 'priceTo', 'categoryId'],
+    props: ['priceFrom', 'priceTo', 'categoryId', 'color'],
     computed: {
 
         categories() {
@@ -175,17 +177,22 @@ export default {
             categoryId(value) {
             this.currentCategoryId = value;
       },
+            color(value) {
+            this.currentColor = value;
+      },
     },
     methods: {
         submit(){
             this.$emit('update:priceFrom', this.currentPriceFrom);
             this.$emit('update:priceTo', this.currentPriceTo);
             this.$emit('update:categoryId', this.currentCategoryId);
+            this.$emit('update:color', this.currentColor);
         },
                 reset(){
             this.$emit('update:priceFrom', 0);
             this.$emit('update:priceTo', 0);
             this.$emit('update:categoryId', 0);
+            this.$emit('update:color', 0);
         },
 
     }
