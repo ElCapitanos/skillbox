@@ -2,6 +2,7 @@ export default [
     {
         id:1,
         categoryId: 1,
+        colorId: 7,
         title: 'Гитара Fender Stratocaster',
         price: 170000,
         image: '/img/strat.jpg'
@@ -10,6 +11,7 @@ export default [
     {
         id:2,
         categoryId: 1,
+        colorId: 2,
         title: 'Гитара Fender Telecaster',
         price: 172000,
         image: '/img/tele.jpg'
@@ -18,6 +20,7 @@ export default [
     {
         id:3,
         categoryId: 2,
+        colorId: 3,
         title: 'Гитара Gibson ES-335',
         price: 222000,
         image: '/img/es.jpg'
@@ -26,6 +29,7 @@ export default [
     {
         id:4,
         categoryId: 1,
+        colorId: 5,
         title: 'Гитара Gibson Les Paul',
         price: 180000,
         image: '/img/les.jpg'
@@ -34,6 +38,7 @@ export default [
     {
         id:5,
         categoryId: 4,
+        colorId: 6,
         title: 'Гитара Gibson Flying V',
         price: 99999,
         image: '/img/fly.jpg'
@@ -42,6 +47,7 @@ export default [
     {
         id:6,
         categoryId: 2,
+        colorId: 6,
         title: 'Гитара Gretsch Falcon',
         price: 320000,
         image: '/img/falcon.jpg'
@@ -50,6 +56,7 @@ export default [
     {
         id:7,
         categoryId: 3,
+        colorId: 5,
         title: 'Гитара Music Man Axis',
         price: 180000,
         image: '/img/axis.jpg'
@@ -58,6 +65,7 @@ export default [
     {
         id:8,
         categoryId: 3,
+        colorId: 7,
         title: 'Гитара Peavey Wolfgang',
         price: 99000,
         image: '/img/peavey.jpg'
@@ -66,6 +74,7 @@ export default [
     {
         id:9,
         categoryId: 1,
+        colorId: 1,
         title: 'Гитара Jackson Soloist',
         price: 129000,
         image: '/img/jack.jpg'
@@ -74,6 +83,7 @@ export default [
     {
         id:10,
         categoryId: 3,
+        colorId: 4,
         title: 'Гитара Ibanez RG',
         price: 89999,
         image: '/img/rg.jpg'
@@ -82,6 +92,7 @@ export default [
     {
         id:11,
         categoryId: 3,
+        colorId: 6,
         title: 'Гитара Kramer Pacer',
         price: 49999,
         image: '/img/pacer.jpg'
@@ -90,6 +101,7 @@ export default [
     {
         id:12,
         categoryId: 1,
+        colorId: 5,
         title: 'Гитара PRS Santana',
         price: 229999,
         image: '/img/prs.jpg'
