@@ -62,7 +62,7 @@
                 :value="color.id"
                 v-model.number="currentColorId"
               />
-                 <span
+              <span
                 class="colors__value"
                 :style="{ 'background-color': color.code }"
               >
@@ -254,6 +254,7 @@
 <script>
 import categories from "../data/categories";
 import colors from "../data/colors";
+import products from "../data/products";
 export default {
   data() {
     return {
@@ -270,6 +271,9 @@ export default {
     },
     colors() {
       return colors;
+    },
+    products() {
+      return products;
     },
   },
 

@@ -32,7 +32,7 @@ export default [
   {
     id: 6,
     title: "белый",
-    code: "#ffffff",
+    code: "#f1f1ec",
   },
 
   {

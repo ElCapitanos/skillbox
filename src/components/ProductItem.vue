@@ -13,14 +13,13 @@
     <span class="catalog__price"> {{ product.price }} ₽ </span>
 
     <ul class="colors colors--black">
-      <li class="colors__item" v-for="color in colors" :key="color.id">
+      <li class="colors__item" v-for="color in product.colors" :key="color.id">
         <label class="colors__label">
           <input
             class="colors__radio sr-only"
             type="radio"
             name="color"
             :value="color.id"
-            v-model.number="currentColorId"
           />
           <span
             class="colors__value"
@@ -29,7 +28,7 @@
           </span>
         </label>
       </li>
-<!--
+      <!--
       <li class="colors__item">
         <label class="colors__label">
           <input
@@ -72,14 +71,29 @@
 
 <script>
 import colors from "../data/colors";
-import currentColorId from "./ProductFilter.vue";
+import products from "../data/products";
+/*import currentColorId from "./ProductFilter.vue";*/
 
 export default {
   data() {
     return {
-      color: "#73B6EA",
+      colors,
     };
   },
   props: ["product"],
+  /*computed: {
+    colorsforThisProducts(){
+  let actualColors = []
+
+  for (let productColor of products.color) {
+  for (let color of colors) {
+  if (color == productColor.id){
+  actualColors.push(color)
+       return actualColors
+    }
+  }
+      }
+    }
+  },*/
 };
 </script>
