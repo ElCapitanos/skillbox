@@ -28,43 +28,6 @@
           </span>
         </label>
       </li>
-      <!--
-      <li class="colors__item">
-        <label class="colors__label">
-          <input
-            class="colors__radio sr-only"
-            type="radio"
-            value="#73B6EA"
-            v-model="color"
-          />
-          <span class="colors__value" style="background-color: #73B6EA;">
-          </span>
-        </label>
-      </li>
-      <li class="colors__item">
-        <label class="colors__label">
-          <input
-            class="colors__radio sr-only"
-            type="radio"
-            value="#8BE000"
-            v-model="color"
-          />
-          <span class="colors__value" style="background-color: #8BE000;">
-          </span>
-        </label>
-      </li>
-      <li class="colors__item">
-        <label class="colors__label">
-          <input
-            class="colors__radio sr-only"
-            type="radio"
-            value="#222"
-            v-model="color"
-          />
-          <span class="colors__value" style="background-color: #222;"> </span>
-        </label>
-      </li>
-      -->
     </ul>
   </li>
 </template>
@@ -72,7 +35,6 @@
 <script>
 import colors from "../data/colors";
 import products from "../data/products";
-/*import currentColorId from "./ProductFilter.vue";*/
 
 export default {
   data() {
@@ -81,19 +43,5 @@ export default {
     };
   },
   props: ["product"],
-  /*computed: {
-    colorsforThisProducts(){
-  let actualColors = []
-
-  for (let productColor of products.color) {
-  for (let color of colors) {
-  if (color == productColor.id){
-  actualColors.push(color)
-       return actualColors
-    }
-  }
-      }
-    }
-  },*/
 };
 </script>
