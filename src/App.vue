@@ -72,7 +72,7 @@ export default {
                   filteredProducts = filteredProducts.filter(product => product.categoryId === this.filterCategoryId);
                 }
                 if(this.filterColorId) {
-                  filteredProducts = filteredProducts.filter(product => product.colors.some(c => colors.id === this.filterColorId));
+                  filteredProducts = filteredProducts.filter(product => product.colors.some(c => c.id === this.filterColorId));
                 }
 
 
