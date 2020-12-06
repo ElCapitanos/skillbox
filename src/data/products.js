@@ -41,6 +41,7 @@ export default [
 
   {
     id: 3,
+    categoryId: 2,
     colors: [
       {
         id: 3,

@@ -2,7 +2,7 @@
 
         <ul class="catalog__pagination pagination">
           <li class="pagination__item">
-            <a class="pagination__link pagination__link--arrow" href="#" aria-label="Предыдущая страница" v-if="page !== 1" @click.prevent="paginate(page-1)">
+            <a class="pagination__link pagination__link--arrow" href="#" aria-label="Предыдущая страница"  @click.prevent="paginate(page-1)">
               <svg width="8" height="14" fill="currentColor">
                 <use xlink:href="#icon-arrow-left"></use>
               </svg>
@@ -16,7 +16,7 @@
           </li>
 
           <li class="pagination__item">
-            <a class="pagination__link pagination__link--arrow" href="#" aria-label="Следующая страница"  v-if="page !== pages" @click.prevent="paginate(page+1)">
+            <a class="pagination__link pagination__link--arrow" href="#" aria-label="Следующая страница"   @click.prevent="paginate(page+1)">
               <svg width="8" height="14" fill="currentColor">
                 <use xlink:href="#icon-arrow-right"></use>
               </svg>
@@ -39,8 +39,10 @@
             }
         },
         methods: {
-            paginate(page) {
+                paginate(page, pages) {
+                if (+page>=1 && +page<=this.pages){
                 this.$emit('paginate', page);
+              }
             }
         }
     }
