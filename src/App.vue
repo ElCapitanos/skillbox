@@ -1,10 +1,11 @@
 <template>
-<!--@gotoPage="(pageName, PageParams) => gotoPage(pageName, pageParams)"-->
-<component :is="currentPageComponent" :page-params="currentPageParams" />
+  <!--@gotoPage="(pageName, PageParams) => gotoPage(pageName, pageParams)"-->
+  <!--<component :is="currentPageComponent" :page-params="currentPageParams" />-->
+  <router-view />
 </template>
 
 <script>
-import MainPage from "./pages/MainPage";
+/*import MainPage from "./pages/MainPage";
 import ProductPage from "./pages/ProductPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import eventBus from "./eventBus";
@@ -13,9 +14,9 @@ const routes = {
   main: 'MainPage',
   product: 'ProductPage'
 };
-
+*/
 export default {
-data() {
+  /*data() {
   return {
     currentPage: 'main',
     currentPageParams: {}
@@ -35,7 +36,6 @@ computed: {
 components: {MainPage, ProductPage, NotFoundPage},
 created() {
   eventBus.$on('gotoPage', (pageName, pageParams) => this.gotoPage(pageName, pageParams))
-}
-}
+}*/
+};
 </script>
-
