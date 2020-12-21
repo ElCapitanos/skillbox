@@ -67,7 +67,9 @@
             method="POST"
             @submit.prevent="addToCart"
           >
-            <b class="item__price"> {{ product.price | numberFormat }} ₽ </b>
+            <b class="item__price">
+              {{ (product.price * productAmount) | numberFormat }} ₽
+            </b>
 
             <fieldset class="form__block">
               <legend class="form__legend">Цвет:</legend>
@@ -169,7 +171,11 @@
 
             <div class="item__row">
               <div class="form__counter">
-                <button type="button" aria-label="Убрать один товар">
+                <button
+                  type="button"
+                  aria-label="Убрать один товар"
+                  @click.prevent="amountMinus(productAmount)"
+                >
                   <svg width="12" height="12" fill="currentColor">
                     <use xlink:href="#icon-minus"></use>
                   </svg>
@@ -177,7 +183,11 @@
 
                 <input type="text" v-model.number="productAmount" />
 
-                <button type="button" aria-label="Добавить один товар">
+                <button
+                  type="button"
+                  aria-label="Добавить один товар"
+                  @click.prevent="amountPlus(productAmount)"
+                >
                   <svg width="12" height="12" fill="currentColor">
                     <use xlink:href="#icon-plus"></use>
                   </svg>
@@ -269,11 +279,14 @@ import products from "@/data/products";
 import categories from "@/data/categories";
 import gotoPage from "@/helpers/gotoPage";
 import numberFormat from "@/helpers/numberFormat";
+import amountPlus from "@/helpers/amountPlus";
+import amountMinus from "@/helpers/amountMinus";
+import { mapMutations } from "vuex";
 
 export default {
   data() {
     return {
-      productAmount: 1,
+      productAmount: 0,
     };
   },
 
@@ -293,6 +306,8 @@ export default {
   },
   methods: {
     gotoPage,
+    amountPlus,
+    amountMinus,
     addToCart() {
       this.$store.commit("addProductToCart", {
         productId: this.product.id,
