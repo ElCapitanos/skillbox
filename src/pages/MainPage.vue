@@ -76,7 +76,7 @@ export default {
 
             products() {
               return this.productsData
-               ? this.productsData.items.map (product => {
+               ? this.productsData.items.map(product => {
                  return {
                    ...product,
                    image: product.image.file.url
@@ -94,17 +94,20 @@ export default {
 
 methods: {
   loadProducts () {
-    axios.get('http://vue-study.dev.creonit.ru/api/products?page=${this.page}&limit=${this.productsPerPage}')
+    axios.get('https://vue-study.skillbox.cc/api/products?page=${this.page}&limit=${this.productsPerPage}')
     .then(response => this.productsData = response.data);
-  },
-  watch: {
+  }
+
+},
+watch: {
     page() {
       this.loadProducts();
     }
-  }
 },
 created() {
   this.loadProducts();
+},
+
 }
-}
+
 </script>
