@@ -1,5 +1,7 @@
 <template>
-  <main class="content container">
+  <main class="content container" v-if="productLoading">Загрузка товара...</main>
+  <main class="content container" v-else-if="!productData">Не удалось загрузить товар</main>
+  <main class="content container" v-else>
     <div class="content__top">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
@@ -275,18 +277,22 @@
 </template>
 
 <script>
-import products from "@/data/products";
-import categories from "@/data/categories";
+//import products from "@/data/products";
+//import categories from "@/data/categories";
 import gotoPage from "@/helpers/gotoPage";
 import numberFormat from "@/helpers/numberFormat";
 import amountPlus from "@/helpers/amountPlus";
 import amountMinus from "@/helpers/amountMinus";
 import { mapMutations } from "vuex";
+import axios from 'axios';
 
 export default {
   data() {
     return {
-      productAmount: 0,
+      productAmount: 1,
+      productData:null,
+      productLoading: false,
+      productLoadingFailed: false,
     };
   },
 
@@ -296,12 +302,10 @@ export default {
   },
   computed: {
     product() {
-      return products.find((product) => product.id === +this.$route.params.id);
+      return this.productData;
     },
     category() {
-      return categories.find(
-        (category) => category.id === this.product.categoryId
-      );
+      return this.productData.category;
     },
   },
   methods: {
@@ -314,6 +318,21 @@ export default {
         amount: this.productAmount,
       });
     },
+
+    loadProduct() {
+      this.productLoading = true;
+      this.productLoadingFailed = false;
+      axios.get(API_BASE_URL + '/api/products/' + this.$route.params.id)
+        .then(response => this.productData = response.data)
+        .catch(() => this.productLoadingFailed = true)
+        .then(() => this.productLoading = false);
+    }
+
   },
+
+  created() {
+    this.loadProduct() 
+  }
+
 };
 </script>

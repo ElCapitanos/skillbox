@@ -88,7 +88,7 @@ export default {
                  return {
                    ...product,
                    image: product.image.file.url,
-                   //color: product.colors
+                   color: product.colors
                  }
                })
                 : [];
@@ -105,7 +105,7 @@ methods: {
   loadProducts () {
     this.productsLoading = true;
     this.productsLoadingFailed = false;
-    //clearTimeout(this.loadProductsTimer);
+    clearTimeout(this.loadProductsTimer);
     this.loadProductsTimer = setTimeout(() => {
     axios.get(API_BASE_URL + `/api/products`, {
       params: {
@@ -120,7 +120,7 @@ methods: {
         .then(response => this.productsData = response.data)
         .catch(() => this.productsLoadingFailed = true)
         .then(() => this.productsLoading = false);  
-    }, 2000);
+    }, 0);
   }
 
 },
