@@ -15,6 +15,10 @@
       
              <section class="catalog">
 
+               <div v-if="productsLoading">Загрузка товаров...</div>
+              <div v-if="productsLoadingFailed">Ошибка при загрузке товаров &nbsp; <button @click.prevent="loadProducts">Попробовать еще раз</button></div>
+
+
 <!--@gotoPage="(pageName, PageParams) => $emit('gotoPage', pageName, pageParams)"-->
 <ProductList :products="products"></ProductList>
 <BasePagination v-model="page" :count="countProducts" :per-page="productsPerPage" />
@@ -27,12 +31,13 @@
 </template>
 
 <script>
-import products from '@/data/products'
+//import products from '@/data/products'
 import ProductList from "@/components/ProductList"
 import BasePagination from "@/components/BasePagination"
 import ProductFilter from "@/components/ProductFilter"
 import colors from '@/data/colors'
 import axios from 'axios'
+import {API_BASE_URL} from "../config"
 
 
 export default {
@@ -47,11 +52,14 @@ export default {
       page: 1,
       productsPerPage:3,
 
-      productsData: null
+      productsData: null,
+
+      productsLoading: false,
+      productsLoadingFailed: false,
     } 
     },
     computed: {
-            filteredProducts(){
+            /*filteredProducts(){
               let filteredProducts = products;
 
                 if(this.filterPriceFrom > 0) {
@@ -71,7 +79,7 @@ export default {
 
 
               return filteredProducts;
-            },
+            },*/
 
 
             products() {
@@ -79,7 +87,8 @@ export default {
                ? this.productsData.items.map(product => {
                  return {
                    ...product,
-                   image: product.image.file.url
+                   image: product.image.file.url,
+                   //color: product.colors
                  }
                })
                 : [];
@@ -94,13 +103,41 @@ export default {
 
 methods: {
   loadProducts () {
-    axios.get('https://vue-study.skillbox.cc/api/products?page=${this.page}&limit=${this.productsPerPage}')
-    .then(response => this.productsData = response.data);
+    this.productsLoading = true;
+    this.productsLoadingFailed = false;
+    //clearTimeout(this.loadProductsTimer);
+    this.loadProductsTimer = setTimeout(() => {
+    axios.get(API_BASE_URL + `/api/products`, {
+      params: {
+        page: this.page,
+        limit: this.productsPerPage,
+        categoryId: this.filterCategoryId,
+        colorId: this.filterColorId,
+        minPrice: this.filterPriceFrom,
+        maxPrice: this.filterPriceTo
+      }
+    })
+        .then(response => this.productsData = response.data)
+        .catch(() => this.productsLoadingFailed = true)
+        .then(() => this.productsLoading = false);  
+    }, 2000);
   }
 
 },
 watch: {
     page() {
+      this.loadProducts();
+    },
+    filterPriceFrom() {
+      this.loadProducts();
+    },
+    filterPriceTo(){
+      this.loadProducts();
+    },
+    filterCategoryId() {
+      this.loadProducts();
+    },
+    filterColorId() {
       this.loadProducts();
     }
 },
