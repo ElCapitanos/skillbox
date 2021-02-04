@@ -28,7 +28,7 @@
           <img
             width="570"
             height="570"
-            :src="product.image"
+            :src="product.image.file.url"
             :alt="product.title"
           />
         </div>
@@ -285,6 +285,7 @@ import amountPlus from "@/helpers/amountPlus";
 import amountMinus from "@/helpers/amountMinus";
 import { mapMutations } from "vuex";
 import axios from 'axios';
+import {API_BASE_URL} from "../config";
 
 export default {
   data() {
@@ -307,7 +308,12 @@ export default {
     category() {
       return this.productData.category;
     },
+
   },
+
+
+
+
   methods: {
     gotoPage,
     amountPlus,
@@ -330,8 +336,15 @@ export default {
 
   },
 
-  created() {
-    this.loadProduct() 
+
+
+  watch: {
+    '$route.params.id': {
+      handler() {
+         this.loadProduct()  
+         },
+         immediate: true
+    }
   }
 
 };
