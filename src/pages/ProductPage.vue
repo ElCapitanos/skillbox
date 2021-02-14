@@ -286,6 +286,7 @@ import amountMinus from "@/helpers/amountMinus";
 import { mapMutations } from "vuex";
 import axios from 'axios';
 import {API_BASE_URL} from "../config";
+import { mapActions } from "vuex";
 
 export default {
   data() {
@@ -315,11 +316,14 @@ export default {
 
 
   methods: {
-    gotoPage,
+
+    ...mapActions(['addProductToCart']),
+
+    gotoPage, 
     amountPlus,
     amountMinus,
     addToCart() {
-      this.$store.commit("addProductToCart", {
+      this.addProductToCart("addProductToCart", {
         productId: this.product.id,
         amount: this.productAmount,
       });
@@ -332,7 +336,8 @@ export default {
         .then(response => this.productData = response.data)
         .catch(() => this.productLoadingFailed = true)
         .then(() => this.productLoading = false);
-    }
+    },
+
 
   },
 
