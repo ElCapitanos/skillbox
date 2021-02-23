@@ -88,7 +88,7 @@ export default {
                  return {
                    ...product,
                    image: product.image.file.url,
-                   //color: product.colors
+                   color: product.colors.id
                  }
                })
                 : [];

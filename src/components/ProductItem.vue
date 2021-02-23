@@ -36,7 +36,8 @@
 </template>
 
 <script>
-import colors from "../data/colors";
+import {API_BASE_URL} from "../config.js";
+//import colors from "../data/colors";
 import products from "../data/products";
 import eventBus from "@/eventBus";
 import gotoPage from "@/helpers/gotoPage";
