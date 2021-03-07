@@ -45,10 +45,10 @@ import numberFormat from "@/helpers/numberFormat";
 
 export default {
   data() {
-    return {
-      colors,
-    };
-  },
+    //return {
+   //colors,
+  // };
+ },
   filters: {
     numberFormat,
   },
